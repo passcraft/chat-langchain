@@ -1,0 +1,11 @@
+step1:
+install dependencies using pip install -r requirements.txt
+
+step2:
+run ingest.sh to download langchain api documentation (model is built on training this data. this requires wget)
+
+step3:
+run main.py (fastapi server.)
+
+step4:
+open address http://127.0.0.1:9000 and start communicating with chat bot.

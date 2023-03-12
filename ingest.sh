@@ -3,8 +3,8 @@
 # Error if any command fails
 set -e
 # downloaded via moba-xterm, as windows does not have wget utility
-#if [ ! -d langchain.readthedocs.io ]; then
-#	echo downloading docs
-#	wget -r -A.html https://langchain.readthedocs.io/en/latest/
-#fi
+if [ ! -d langchain.readthedocs.io ]; then
+	echo downloading docs
+	wget -r -A.html https://langchain.readthedocs.io/en/latest/
+fi
 python ingest.py
