@@ -5,7 +5,10 @@ step2:
 run ingest.sh to download langchain api documentation (model is built on training this data. this requires wget)
 
 step3:
-run main.py (fastapi server.)
+add openai api key as environment variable, with key name being OPENAI_API_KEY
 
 step4:
+run main.py (fastapi server.)
+
+step5:
 open address http://127.0.0.1:9000 and start communicating with chat bot.
