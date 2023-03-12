@@ -25,6 +25,7 @@ async def startup_event():
     with open("vectorstore.pkl", "rb") as f:
         global vectorstore
         vectorstore = pickle.load(f)
+    print('loaded vector space')
 
 
 @app.get("/")
@@ -34,11 +35,12 @@ async def get(request: Request):
 
 @app.websocket("/chat")
 async def websocket_endpoint(websocket: WebSocket):
+    # first entry point after loading the page
     await websocket.accept()
     question_handler = QuestionGenCallbackHandler(websocket)
     stream_handler = StreamingLLMCallbackHandler(websocket)
     chat_history = []
-    qa_chain = get_chain(vectorstore, question_handler, stream_handler)
+    qa_chain = get_chain(vectorstore, question_handler, stream_handler, tracing=True)
     # Use the below line instead of the above line to enable tracing
     # Ensure `langchain-server` is running
     # qa_chain = get_chain(vectorstore, question_handler, stream_handler, tracing=True)
@@ -76,5 +78,4 @@ async def websocket_endpoint(websocket: WebSocket):
 
 if __name__ == "__main__":
     import uvicorn
-
-    uvicorn.run(app, host="0.0.0.0", port=9000)
+    uvicorn.run(app, host="127.0.0.1", port=9000)
