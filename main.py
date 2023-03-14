@@ -20,12 +20,12 @@ vectorstore: Optional[VectorStore] = None
 @app.on_event("startup")
 async def startup_event():
     logging.info("loading vectorstore")
-    if not Path("vectorstore.pkl").exists():
-        raise ValueError("vectorstore.pkl does not exist, please run ingest.py first")
-    with open("vectorstore.pkl", "rb") as f:
+    if not Path("vectorstore_all_pdf.pkl").exists():
+        raise ValueError("vectorstore_all_pdf.pkl does not exist, please run ingest.py first")
+    with open("vectorstore_all_pdf.pkl", "rb") as f:
         global vectorstore
         vectorstore = pickle.load(f)
-    print('loaded vector space')
+    print('loaded vector space multi pdf')
 
 
 @app.get("/")

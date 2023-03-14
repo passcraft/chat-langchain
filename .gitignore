@@ -137,3 +137,8 @@ dmypy.json
 
 vectorstore.pkl
 langchain.readthedocs.io/
+# data files used to train
+*.pdf
+*.txt
+# ignore data vector files
+*.pkl

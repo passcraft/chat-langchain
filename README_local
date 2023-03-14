@@ -2,13 +2,15 @@ step1:
 install dependencies using pip install -r requirements.txt
 
 step2:
+copy pdf files in <projectroot>/example_data/ folder.
+step3:
 run ingest.sh to download langchain api documentation (model is built on training this data. this requires wget)
 
-step3:
+step4:
 add openai api key as environment variable, with key name being OPENAI_API_KEY
 
-step4:
+step5:
 run main.py (fastapi server.)
 
-step5:
+step6:
 open address http://127.0.0.1:9000 and start communicating with chat bot.
